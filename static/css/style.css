@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    color: #333;
+    background: #f1f1f1;
+}
+
+.header {
+    background: #fff;
+    height: 55px;
+    line-height: 55px;
+    border-bottom: 1px #ccc solid;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header h1 {
+    display: inline;
+    font-size: 1.4em;
+    padding-left: 32px;
+    background-image: url(../img/todolist-icon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.header a {
+    text-decoration: none;
+    color: unset;
+}
+
+.header a:hover {
+    color: #000;
+}
+
+main {
+    width: 900px;
+    min-height: 400px;
+    margin: 50px auto;
+}
+
+section {
+    background: #fff;
+    border: 1px #ccc solid; 
+    border-radius: 10px;   
+}
+
+section > header {
+    border-bottom: 1px #ccc solid;
+    padding: 25px;
+}
+
+section > div {
+    padding: 25px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form label[for] {
+    cursor: pointer;
+}
+
+form input[type="text"],
+form input[type="email"] {
+    width: 100%;
+    height: 45px;
+    font: inherit;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+form > div + button[type="submit"] {
+    margin-top: 20px;
+    background-color: hsl(240, 53%, 48%);
+    border: 1px solid hsl(240, 53%, 10%);
+    color: #fff;
+    font: inherit;
+    width: 100%;
+    height: 45px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form > div + button[type="submit"]:hover {
+    transition: .5s background-color, border;
+    background-color: hsl(240, 53%, 55%);
+    border: 1px solid hsl(240, 53%, 30%);
+}
+
+form > div > .error-list {
+    margin: 10px 0;
+}
+
+form > div {
+    margin-bottom: 20px;
+}
+
+select {
+    width: 100%;
+    height: 45px;
+    font: inherit;
+    padding: 0 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px #ccc solid;
+    background: transparent;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+.error-list li {
+    color: rgb(230, 13, 13);
+}
+
+.todo-list {
+    list-style-type: none;
+}
+
+.todo-list li {
+    display: flex;
+    align-items: center;
+}
+
+.todo-list input[type="checkbox"],
+.todo-list li > label {
+    cursor: pointer;
+}
+
+.todo-list label {
+    margin-left: 5px;
+}
+
+.todo-list .tools {
+    margin-left: auto;
+}
+
+.todo-list .tools a {
+    text-decoration: none;
+}
+
+.todo-list .tools button {
+    display: inline;
+    width: unset;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.button {
+    font: inherit;
+    width: 100%;
+    height: 45px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-primary {
+    background-color: hsl(240, 53%, 48%);
+    border: 1px solid hsl(240, 53%, 10%);
+    color: #fff;
+}
+
+.button-primary:hover {
+    transition: .5s background-color, border;
+    background-color: hsl(240, 53%, 55%);
+    border: 1px solid hsl(240, 53%, 30%);
+}
+
+.button-danger {
+    background-color: hsl(0, 53%, 48%);
+    border: 1px solid hsl(0, 53%, 10%);
+    color: #fff;
+}
+
+.button-danger:hover {
+    transition: .5s background-color, border;
+    background-color: hsl(0, 53%, 55%);
+    border: 1px solid hsl(0, 53%, 30%);
+}
