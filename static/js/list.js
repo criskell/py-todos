@@ -13,3 +13,17 @@ document.querySelectorAll("[data-todo-remove]").forEach((e) =>
     });
   })
 );
+
+document.querySelectorAll("[data-todo-toggle-status]").forEach((e) =>
+  e.addEventListener("click", (e) => {
+    const el = e.target;
+    const id = el.dataset.todoToggleStatus;
+    const label = el.parentElement.querySelector("label");
+
+    label.classList.toggle("closed");
+
+    fetch(`/${id}/toggleStatus`, {
+      method: "POST",
+    });
+  })
+);

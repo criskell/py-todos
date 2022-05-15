@@ -10,6 +10,15 @@ body {
     background: #f1f1f1;
 }
 
+a {
+    text-decoration: none;
+    color: rgb(33, 33, 189);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .header {
     background: #fff;
     height: 55px;
@@ -56,6 +65,7 @@ section > header {
 
 section > div {
     padding: 25px;
+    padding-bottom: 15px;
 }
 
 form label {
@@ -129,6 +139,7 @@ ul {
 .todo-list li {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .todo-list input[type="checkbox"],
@@ -153,6 +164,11 @@ ul {
     width: unset;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.todo-list .closed {
+    text-decoration: line-through;
+    color: #888;
 }
 
 .button {

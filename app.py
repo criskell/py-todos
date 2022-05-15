@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    todos = readJson("todos.json", {})
+    todos = readJson("data/todos.json", {})
 
     return render_template('index.html.j2', todos=enumerate(todos.items()))
 
@@ -22,14 +22,14 @@ def addTodo():
         if description != '':
             id = str(uuid.uuid4())
 
-            todos = readJson("todos.json", {})
+            todos = readJson("data/todos.json", {})
 
             todos[id] = {
                 'description': description,
                 'status': 'opened'
             }
 
-            writeJson("todos.json", todos)
+            writeJson("data/todos.json", todos)
 
             return redirect(url_for('index'))
         else:
@@ -41,7 +41,7 @@ def addTodo():
 def editTodo(id):
     id = str(id)
 
-    todos = readJson("todos.json", {})
+    todos = readJson("data/todos.json", {})
 
     if id not in todos:
         abort(404)
@@ -61,14 +61,14 @@ def editTodo(id):
             todo['description'] = ''
             todo['status'] = status
         else:
-            todos = readJson("todos.json", {})
+            todos = readJson("data/todos.json", {})
 
             todos[id] = {
                 'description': description,
                 'status': status
             }
 
-            writeJson("todos.json", todos)
+            writeJson("data/todos.json", todos)
 
             return redirect(url_for('index'))
 
@@ -76,18 +76,30 @@ def editTodo(id):
 
 @app.route("/<id>", methods=["DELETE"])
 def removeTodo(id):
-    todos = readJson("todos.json", {})
+    todos = readJson("data/todos.json", {})
 
     if id not in todos:
         abort(404)
 
     del todos[id]
 
-    writeJson("todos.json", todos)
+    writeJson("data/todos.json", todos)
 
     return "success"
 
-@app.route("/<id>/close", )
+@app.route("/<id>/toggleStatus", methods=["POST"])
+def toggleStatus(id):
+    todos = readJson("data/todos.json", {})
+
+    if id not in todos:
+        abort(404)
+
+    todo = todos[id]
+    todo['status'] = 'closed' if todo['status'] == 'opened' else 'opened'
+
+    writeJson("data/todos.json", todos)
+
+    return "success"
 
 if __name__ == "__main__":
     app.run()

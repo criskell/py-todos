@@ -10,10 +10,13 @@
                     type="checkbox"
                     name="status"
                     id="todo_{{ i + 1 }}"
-                    data-todo-close="{{ id }}"
+                    data-todo-toggle-status="{{ id }}"
+                    {{ 'checked' if todo.status == "closed" else '' }}
                 >
-                <label for="todo_{{ i + 1 }}">{{ todo.description }}</label>
-
+                <label
+                    for="todo_{{ i + 1 }}"
+                    {{ 'class="closed"' if todo.status == "closed" else '' }}
+                >{{ todo.description }}</label>
                 <div class="tools">
                     <a href="{{ url_for('editTodo', id=id) }}">
                         <button class="button button-primary">
@@ -25,6 +28,8 @@
                     </button>
                 </div>
             </li>
+        {% else %}
+            <p><strong>Nenhuma tarefa encontrada.</strong>&nbsp;<a href="{{ url_for('addTodo') }}">Adicionar nova tarefa</a>.</p>
         {% endfor %}
     </ul>
 {% endblock %}
